@@ -6,14 +6,15 @@ metadata:
     name: postgres-pod
     app: demo-voting-app
 spec:
-  containers:
-    - name: postgres
-      image: postgres
-      ports:
-        - containerPort: 5432
-      env:
+      containers:
+      - name: postgres
+        image: postgres:9.4
+        env:
         - name: POSTGRES_USER
-          value: "postgres"
+          value: postgres
         - name: POSTGRES_PASSWORD
-          value: "postgres"
-        
+          value: postgres
+        - name: POSTGRES_HOST_AUTH_METHOD
+          value: trust
+        ports:
+        - containerPort: 5432
